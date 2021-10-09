@@ -1,0 +1,32 @@
+start = input()
+txt = str
+st=str
+import requests
+i = 0
+ 
+basis = requests.get(start)
+basis = basis.content
+print(basis)
+basis = str(basis)
+basis = basis[2:12]
+print('Circle')
+    
+while True:
+    print(i)
+    i += 1
+    link = start[0:52] + basis
+    resp = requests.get(link) 
+    resp = resp.content
+    print(resp)
+    txt = str(resp)
+    print(txt[2:4])
+    if txt[2:4] == 'We':
+        print(resp)
+        break
+    else:
+        basis = str(resp)
+        basis = basis[2:12]
+        print(basis)
+st = resp.decode('utf-8')
+print('take it easy')
+print(st)
