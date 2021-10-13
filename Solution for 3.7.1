@@ -1,0 +1,46 @@
+spis = str
+arrin = []
+teams = []
+dictout = {}
+print(type(arr))
+spis = input()
+arrin = spis.split(' ')
+for i in range(1, len(arrin)):
+    arrin[i] = arrin[i].split(';')
+for i in range(1, len(arrin)):
+    for j in range(0, 3, 2):
+        print(arrin[i][j])
+        if arrin[i][j] not in teams:
+            teams.append(arrin[i][j])
+            
+for i in range(len(teams)):
+    dictout.update({teams[i]:[]})
+    dictout[teams[i]].append(0)
+    dictout[teams[i]].append(0)
+    dictout[teams[i]].append(0)
+    dictout[teams[i]].append(0)
+    dictout[teams[i]].append(0)
+
+for i in range(1, len(arrin)):
+    for j in range(4):
+        if arrin[i][j] in dictout.keys():
+            dictout[arrin[i][j]][0] += 1
+
+for i in range(1, len(arrin)):
+    if int(arrin[i][1]) > int(arrin[i][3]):
+        dictout[arrin[i][0]][1] += 1
+        dictout[arrin[i][2]][3] += 1
+        dictout[arrin[i][0]][4] += 3
+    elif int(arrin[i][1]) < int(arrin[i][3]):
+        dictout[arrin[i][2]][1] += 1
+        dictout[arrin[i][0]][3] += 1
+        dictout[arrin[i][2]][4] += 3
+    else:
+        dictout[arrin[i][0]][2] += 1
+        dictout[arrin[i][2]][2] += 1
+        dictout[arrin[i][0]][4] += 1
+        dictout[arrin[i][2]][4] += 1
+        
+print(dictout)
+for i in range(len(teams)):
+    print(((((str(teams[i] + ':' + str(dictout[teams[i]])[1:2]) + str(dictout[teams[i]])[3:5]) + str(dictout[teams[i]])[6:8]) + str(dictout[teams[i]])[9:11]) +str(dictout[teams[i]])[12:14]) + str(dictout[teams[i]])[15:17])
