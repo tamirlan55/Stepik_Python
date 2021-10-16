@@ -1,0 +1,33 @@
+def strtoarr(st):
+    arr = []
+    for i in range(len(st)):
+        arr.append(st[i])
+    return arr
+
+alf = input()
+newalf = input()
+tocode = input()
+todecode = input()
+
+alf_arr = strtoarr(alf)
+newalf_arr = strtoarr(newalf)
+tocode_arr = strtoarr(tocode)
+todecode_arr = strtoarr(todecode)
+
+for i in range(len(tocode_arr)):
+    for j in range(len(alf_arr)):
+        if tocode_arr[i] == alf_arr[j]:
+            tocode_arr[i] = newalf_arr[j]
+            break
+for i in range(len(todecode_arr)):
+    for j in range(len(newalf_arr)):
+        if todecode_arr[i] == newalf_arr[j]:
+            todecode_arr[i] = alf_arr[j]
+            break  
+a = ''.join(alf_arr)  
+b = ''.join(newalf_arr)
+c = ''.join(tocode_arr)
+d = ''.join(todecode_arr)
+
+print(c)
+print(d)
