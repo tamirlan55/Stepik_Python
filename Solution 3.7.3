@@ -1,0 +1,23 @@
+setdict = set()
+setword = set()
+arrin = []
+setout = set()
+
+nd = int(input())
+for i in range(nd):
+    setdict.add(input().title())
+
+nw = int(input())
+for i in range(nw):
+    arrin.append(input().split())
+
+
+for i in arrin:
+    for j in i:
+        j = j.title()
+        setword.add(j)
+
+setout = setword - setdict
+        
+for i in setout:
+    print(i)
