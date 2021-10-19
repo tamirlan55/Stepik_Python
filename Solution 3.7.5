@@ -1,0 +1,39 @@
+Дан файл с таблицей в формате TSV с информацией о росте школьников разных классов.
+
+Напишите программу, которая прочитает этот файл и подсчитает для каждого класса средний рост учащегося.
+text = open('C:\\Users\\elkt\\Downloads\\dataset_3380_5.txt', encoding = 'utf8')
+arrout = []
+dictout = {}
+ 
+lines = text.readlines()
+text.close()
+ 
+for i in range(len(lines)):
+    lines[i] = lines[i].split()
+ 
+for i in range(1, 12):
+    dictout[i] = []
+ 
+for i in range(len(lines)):
+    dictout[int(lines[i][0])].append(int(lines[i][2]))
+ 
+for i in range(1, 12):
+    sum = 0
+    for j in range(len(dictout[i])):
+        sum += dictout[i][j]
+    if sum == None or sum == 0:
+        dictout[i] = '-'
+    else:
+        dictout[i] = sum/len(dictout[i])
+ 
+#print(lines)
+#print(dictout)
+#print(type(dictout[1]))
+#for i in range(1,12):
+#    print(str(i) + ' - ' + str(dictout[i]))
+ 
+textout = open('C:\\Users\\elkt\\Downloads\\SolutionStepik.txt', 'w')
+for i in range(1, 12):
+    textout.write(str(i) + ' ' + str(dictout[i]) + '\n')
+ 
+textout.close()
